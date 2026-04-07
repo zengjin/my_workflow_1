@@ -13,11 +13,11 @@ def prepare_test_excel():
     df2.to_excel('data/v2.xlsx', index=False)
 
 if __name__ == "__main__":
-    prepare_test_excel()
+    # prepare_test_excel()
     app = create_workflow()
     app.invoke({
-        "file_path_v1": "data/v1.xlsx",
-        "file_path_v2": "data/v2.xlsx",
+        "file_path_v1": "data/input_v1.xlsx",
+        "file_path_v2": "data/input_v2.xlsx",
         "data_chunks": [],       # 必须包含这个初始化字段，取代原来的 diff_data
         "llm_raw_response": {}, 
         "error_message": None
