@@ -3,10 +3,8 @@ from typing import Dict, Any
 from app.core.state import WorkflowState
 
 def build_prompt_node(state: WorkflowState) -> Dict[str, Any]:
-    print("--- 节点 2: 拼接提示词 ---")
-    with open('config/rules.txt', 'r', encoding='utf-8') as f:
-        rules = f.read()
-    
-    data_str = json.dumps(state['diff_data'], ensure_ascii=False, indent=2)
-    prompt = f"请根据规则校验数据。规则:\n{rules}\n\n数据:\n{data_str}\n\n请返回JSON:{{'ID':{{'is_error':bool, 'reason':str}}}}"
-    return {"final_prompt": prompt}
+    print("--- 节点 2: 准备提示词模板 ---")
+    # 这里不再读取数据，只确保 rules 文件存在，或者从 state 获取 data_chunks 长度
+    if 'data_chunks' not in state:
+        raise KeyError("State 中缺失 'data_chunks'，请检查节点 1 的输出。")
+    return {} # 串行模式下，具体拼接逻辑移到了 n3 的循环里

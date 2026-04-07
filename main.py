@@ -18,6 +18,8 @@ if __name__ == "__main__":
     app.invoke({
         "file_path_v1": "data/v1.xlsx",
         "file_path_v2": "data/v2.xlsx",
-        "diff_data": [], "final_prompt": "", "llm_raw_response": {}, "error_message": None
+        "data_chunks": [],       # 必须包含这个初始化字段，取代原来的 diff_data
+        "llm_raw_response": {}, 
+        "error_message": None
     })
     print("执行成功！请查看 data/output_marked.xlsx")
